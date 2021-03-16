@@ -1,0 +1,15 @@
+C:\Repos\Prueba\Datos\obj\Debug\netcoreapp3.1\Datos.csprojAssemblyReference.cache
+C:\Repos\Prueba\Datos\obj\Debug\netcoreapp3.1\Datos.AssemblyInfoInputs.cache
+C:\Repos\Prueba\Datos\obj\Debug\netcoreapp3.1\Datos.AssemblyInfo.cs
+C:\Repos\Prueba\Datos\obj\Debug\netcoreapp3.1\Datos.csproj.CoreCompileInputs.cache
+C:\Repos\Prueba\Datos\bin\Debug\netcoreapp3.1\Datos.deps.json
+C:\Repos\Prueba\Datos\bin\Debug\netcoreapp3.1\Datos.runtimeconfig.json
+C:\Repos\Prueba\Datos\bin\Debug\netcoreapp3.1\Datos.runtimeconfig.dev.json
+C:\Repos\Prueba\Datos\bin\Debug\netcoreapp3.1\Datos.dll
+C:\Repos\Prueba\Datos\bin\Debug\netcoreapp3.1\Datos.pdb
+C:\Repos\Prueba\Datos\bin\Debug\netcoreapp3.1\Modelos.dll
+C:\Repos\Prueba\Datos\bin\Debug\netcoreapp3.1\Modelos.pdb
+C:\Repos\Prueba\Datos\obj\Debug\netcoreapp3.1\Datos.csproj.CopyComplete
+C:\Repos\Prueba\Datos\obj\Debug\netcoreapp3.1\Datos.dll
+C:\Repos\Prueba\Datos\obj\Debug\netcoreapp3.1\Datos.pdb
+C:\Repos\Prueba\Datos\obj\Debug\netcoreapp3.1\Datos.genruntimeconfig.cache

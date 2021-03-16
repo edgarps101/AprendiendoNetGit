@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.Data.SqlClient;
 using Negocio;
 
 namespace Prueba
@@ -7,7 +8,7 @@ namespace Prueba
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            new AutosNegocio().listarAutos();
         }
     }
 }
