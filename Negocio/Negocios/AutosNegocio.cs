@@ -11,6 +11,9 @@ namespace Negocio
     {
         public AutosNegocio() { }//constructor
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void listarAutos() {
             List<AutoModelo> listaAutos = new List<AutoModelo>();
             //auto.Add(new Auto(1,"Chevrolet", "Rojo", "2020", 150000));
@@ -36,7 +39,13 @@ namespace Negocio
                 Console.WriteLine("Error al listar los carros " + e.Message);
             }
         }
-
+        /// <summary>
+        /// Método para insertar auto
+        /// </summary>
+        /// <param name="marca"></param>
+        /// <param name="color"></param>
+        /// <param name="modelo"></param>
+        /// <param name="precio"></param>
         public void insertarAuto(string marca, string color, int modelo, decimal precio)
         {
             AutoModelo autoModelo = new AutoModelo();
