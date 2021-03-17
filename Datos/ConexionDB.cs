@@ -11,6 +11,7 @@ namespace Datos
 
         public List<AutoModelo> consultarAutos()
         {
+            //cadena de conexion
             string conexion = "Data Source = DESKTOP-EFK49GE\\SQLEXPRESS; Initial Catalog = Prueba; Integrated Security = True";
             List<AutoModelo> listaAutos = new List<AutoModelo>();
             try
