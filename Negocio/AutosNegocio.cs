@@ -20,11 +20,11 @@ namespace Negocio
                 Console.WriteLine("=========================================\n");
                 foreach (AutoModelo auto in listaAutos)
                 {
-                    Console.WriteLine(auto.Id_Auto);
-                    Console.WriteLine(auto.Marca);
-                    Console.WriteLine(auto.Color);
-                    Console.WriteLine(auto.Modelo);
-                    Console.WriteLine(auto.Precio);
+                    Console.WriteLine("Identificador: " + auto.Id_Auto);
+                    Console.WriteLine("Marca: " + auto.Marca);
+                    Console.WriteLine("Color:" + auto.Color);
+                    Console.WriteLine("Modelo:" + auto.Modelo);
+                    Console.WriteLine("Precio:" + auto.Precio);
                     Console.WriteLine();
                     Console.WriteLine("=========================================\n");
                 }
@@ -33,6 +33,81 @@ namespace Negocio
             catch (Exception e)
             {
                 Console.WriteLine("Error al listar los carros " + e.Message);
+            }
+        }
+
+        public void insertarAuto(string marca, string color, int modelo, decimal precio)
+        {
+            AutoModelo autoModelo = new AutoModelo();
+            try
+            {
+                autoModelo.Marca = marca;
+                autoModelo.Color = color;
+                autoModelo.Modelo = modelo;
+                autoModelo.Precio = precio;
+                new ConexionDB().insertarAuto(autoModelo);
+                Console.WriteLine("Auto agregado exitosamente\n");
+                Console.ReadLine();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error al agregar auto " + e.Message);
+            }
+        }
+
+        public void consultarAuto(int id)
+        {
+            AutoModelo autoModelo = new AutoModelo();
+            try
+            {
+                autoModelo = new ConexionDB().consultarAuto(id);
+                Console.WriteLine("=========================================\n");
+                Console.WriteLine("Identificador: " + autoModelo.Id_Auto);
+                Console.WriteLine("Marca: " + autoModelo.Marca);
+                Console.WriteLine("Color:" + autoModelo.Color);
+                Console.WriteLine("Modelo:" + autoModelo.Modelo);
+                Console.WriteLine("Precio:" + autoModelo.Precio);
+                Console.WriteLine();
+                Console.WriteLine("=========================================\n");
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine("Error al buscar auto " + e.Message);
+            }
+        }
+
+        public void actualizarAuto(int id, string marca, string color, int? modelo, decimal? precio)
+        {
+            AutoModelo autoModelo = new AutoModelo();
+            AutoModelo autoModelo2 = new AutoModelo();
+            try
+            {
+                autoModelo = new ConexionDB().consultarAuto(id);
+                autoModelo2.Id_Auto = autoModelo.Id_Auto;
+                autoModelo2.Marca = marca == "" ? autoModelo.Marca : marca;
+                autoModelo2.Color = color == "" ? autoModelo.Color : color;
+                autoModelo2.Modelo = modelo == 0 ? autoModelo.Modelo : modelo;
+                autoModelo2.Precio = precio == 0 ? autoModelo.Precio : precio;
+                new ConexionDB().actualizarAuto(autoModelo2);
+                Console.WriteLine("Auto actualizado exitosamente\n");
+                Console.ReadLine();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error al agregar auto " + e.Message);
+            }
+        }
+
+        public void eliminarAuto(int id)
+        {
+            try
+            {
+                new ConexionDB().eliminarAuto(id);
+                Console.WriteLine("Auto eliminado exitosamente\n");
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error al eliminar auto " + e.Message);
             }
         }
 
