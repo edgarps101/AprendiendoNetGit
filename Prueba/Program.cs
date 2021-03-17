@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.Data.SqlClient;
 using Negocio;
+using Negocio.Interfaces;
 
 namespace Prueba
 {

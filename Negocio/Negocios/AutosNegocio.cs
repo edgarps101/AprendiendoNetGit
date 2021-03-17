@@ -1,12 +1,13 @@
 ﻿using Datos;
 using Modelos;
+using Negocio.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Negocio
 {
-    public class AutosNegocio
+    public class AutosNegocio : IAutosNegocio
     {
         public AutosNegocio() { }
 
@@ -111,5 +112,39 @@ namespace Negocio
             }
         }
 
+        public List<AutosNegocio> consultar()
+        {
+            throw new NotImplementedException();
+        }
+
+        public AutosNegocio consultarId(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void insertar(AutosNegocio objeto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void actualizar(AutosNegocio objeto)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void eliminar(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void encender()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void apagar()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
