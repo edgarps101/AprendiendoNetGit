@@ -9,7 +9,7 @@ namespace Negocio
 {
     public class AutosNegocio : IAutosNegocio
     {
-        public AutosNegocio() { }
+        public AutosNegocio() { }//constructor
 
         public void listarAutos() {
             List<AutoModelo> listaAutos = new List<AutoModelo>();
