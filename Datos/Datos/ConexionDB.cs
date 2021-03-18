@@ -8,7 +8,9 @@ namespace Datos
 {
     public class ConexionDB
     {
-        //cadena de conexion
+        /// <summary>
+        /// Cadena de conexión base de datos local
+        /// </summary>
         string conexion = "Data Source = DESKTOP-EFK49GE\\SQLEXPRESS; Initial Catalog = Prueba; Integrated Security = True";
 
         public List<AutoModelo> consultarAutos()

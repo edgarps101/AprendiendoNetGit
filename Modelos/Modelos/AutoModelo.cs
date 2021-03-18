@@ -6,7 +6,7 @@ namespace Modelos
 {
     public class AutoModelo
     {
-        public int? Id_Auto { get; set; }
+        public int Id_Auto { get; set; }
         public string Marca { get; set; }
         public string Color { get; set; }
         public int? Modelo { get; set; }
