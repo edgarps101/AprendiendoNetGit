@@ -1,34 +1,30 @@
-﻿using Datos;
-using Modelos;
+﻿using Modelos;
 using Modelos.Entidades;
-using Negocio.Interfaces;
+using Negocio;
+using Servicios.Servicios.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Text;
 
-namespace Negocio
+namespace Servicios
 {
-    public class AutosNegocio : IAutosNegocio
+    public class AutoServicios : IAutoServicio
     {
-        /// <summary>
-        /// Método para consultar todos los autos
-        /// </summary>
-        /// <returns>Regresa la lista completa de autos de la base de datos</returns>
-        public List<AutoModelo> consultar()
+        public List<DTAuto> consultar()
         {
-            List<DTAutos> listaAutos = new List<DTAutos>();
-            List<AutoModelo> listaAutosModelo = new List<AutoModelo>();
+            List<AutoModelo> listaAutoModelos = new List<AutoModelo>();
+            List<DTAuto> listaDTAuto = new List<DTAuto>();
             try
             {
-                listaAutos = new ConexionDB().consultarAutos();
-                Console.WriteLine("=========================================\n");
-                foreach (DTAutos auto in listaAutos)
+                listaAutoModelos = new AutoNegocio().consultar();
+                foreach (AutoModelo auto in listaAutoModelos)
                 {
-                    var autoModelo = new AutoModelo() {
-                        Color = auto.Color,
+                    var dtAuto = new DTAuto()
+                    {
+                        Id_Auto = auto.Id_Auto,
                         Marca = auto.Marca,
-                        Precio = auto.Modelo,
-                        Modelo = auto.Modelo
+                        Color = auto.Color,
+                        Modelo = auto.Modelo,
+                        Precio = auto.Precio
                     };
                     Console.WriteLine("Identificador: " + auto.Id_Auto);
                     Console.WriteLine("Marca: " + auto.Marca);
@@ -37,10 +33,10 @@ namespace Negocio
                     Console.WriteLine("Precio:" + auto.Precio);
                     Console.WriteLine();
                     Console.WriteLine("=========================================\n");
-                    listaAutosModelo.Add(autoModelo);
+                    listaDTAuto.Add(dtAuto);
                 }
                 Console.ReadLine();
-                return listaAutosModelo;
+                return listaDTAuto;
             }
             catch (Exception e)
             {
@@ -49,17 +45,20 @@ namespace Negocio
             }
         }
 
-        /// <summary>
-        /// Método para consultar un solo auto por el numero de identificador
-        /// </summary>
-        /// <param name="id">identificador del auto</param>
-        /// <returns>Retorna un onjeto de tipo AutoModelo</returns>
-        public AutoModelo consultarId(int id)
+        public DTAuto consultarId(int id)
         {
             AutoModelo autoModelo = new AutoModelo();
             try
             {
-                autoModelo = new ConexionDB().consultarAuto(id);
+                autoModelo = new AutoNegocio().consultarId(id);
+                var dtAuto = new DTAuto()
+                {
+                    Id_Auto = autoModelo.Id_Auto,
+                    Marca = autoModelo.Marca,
+                    Color = autoModelo.Color,
+                    Modelo = autoModelo.Modelo,
+                    Precio = autoModelo.Precio
+                };
                 Console.WriteLine("=========================================\n");
                 Console.WriteLine("Identificador: " + autoModelo.Id_Auto);
                 Console.WriteLine("Marca: " + autoModelo.Marca);
@@ -68,7 +67,7 @@ namespace Negocio
                 Console.WriteLine("Precio:" + autoModelo.Precio);
                 Console.WriteLine();
                 Console.WriteLine("=========================================\n");
-                return autoModelo;
+                return dtAuto;
             }
             catch (Exception e)
             {
@@ -76,16 +75,19 @@ namespace Negocio
                 throw;
             }
         }
-        
-        /// <summary>
-        /// Método para insertar un auto nuevo
-        /// </summary>
-        /// <param name="autoModelo"></param>
-        public void insertar(AutoModelo autoModelo)
+        public void insertar(DTAuto dtAuto)
         {
             try
             {
-                new ConexionDB().insertarAuto(autoModelo);
+                var autoModelo = new AutoModelo()
+                {
+                    Id_Auto = dtAuto.Id_Auto,
+                    Marca = dtAuto.Marca,
+                    Color = dtAuto.Color,
+                    Modelo = dtAuto.Modelo,
+                    Precio = dtAuto.Precio
+                };
+                new AutoNegocio().insertar(autoModelo);
                 Console.WriteLine("Auto agregado exitosamente\n");
                 Console.ReadLine();
             }
@@ -95,22 +97,21 @@ namespace Negocio
                 throw;
             }
         }
-
-        /// <summary>
-        /// Método para actualizar un auto
-        /// </summary>
-        /// <param name="autoModelo"></param>
-        public void actualizar(AutoModelo autoModelo)
+        public void actualizar(DTAuto dtAuto)
         {
             AutoModelo autoModelo2 = new AutoModelo();
             try
             {
-                autoModelo2 = new ConexionDB().consultarAuto(autoModelo.Id_Auto);
-                autoModelo.Marca = autoModelo.Marca == "" ? autoModelo2.Marca : autoModelo.Marca;
-                autoModelo.Color = autoModelo.Color == "" ? autoModelo2.Color : autoModelo.Color;
-                autoModelo.Modelo = autoModelo.Modelo == 0 ? autoModelo2.Modelo : autoModelo.Modelo;
-                autoModelo.Precio = autoModelo.Precio == 0 ? autoModelo2.Precio : autoModelo.Precio;
-                new ConexionDB().actualizarAuto(autoModelo);
+                autoModelo2 = new AutoNegocio().consultarId(dtAuto.Id_Auto);
+                var autoModelo = new AutoModelo()
+                {
+                    Id_Auto = dtAuto.Id_Auto,
+                    Marca = dtAuto.Marca == "" ? autoModelo2.Marca : dtAuto.Marca,
+                    Color = dtAuto.Color == "" ? autoModelo2.Color : dtAuto.Color,
+                    Modelo = dtAuto.Modelo == 0 ? autoModelo2.Modelo : dtAuto.Modelo,
+                    Precio = dtAuto.Precio == 0 ? autoModelo2.Precio : dtAuto.Precio
+                };
+                new AutoNegocio().actualizar(autoModelo);
                 Console.WriteLine("Auto actualizado exitosamente\n");
                 Console.ReadLine();
             }
@@ -120,15 +121,11 @@ namespace Negocio
             }
         }
 
-        /// <summary>
-        /// Método para eliminar un auto
-        /// </summary>
-        /// <param name="id">identificador del auto</param>
         public void eliminar(int id)
         {
             try
             {
-                new ConexionDB().eliminarAuto(id);
+                new AutoNegocio().eliminar(id);
                 Console.WriteLine("Auto eliminado exitosamente\n");
             }
             catch (Exception e)

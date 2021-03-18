@@ -1,0 +1,16 @@
+C:\Repos\Prueba\Servicios\bin\Debug\netcoreapp3.1\Servicios.deps.json
+C:\Repos\Prueba\Servicios\bin\Debug\netcoreapp3.1\Servicios.dll
+C:\Repos\Prueba\Servicios\bin\Debug\netcoreapp3.1\Servicios.pdb
+C:\Repos\Prueba\Servicios\bin\Debug\netcoreapp3.1\Datos.dll
+C:\Repos\Prueba\Servicios\bin\Debug\netcoreapp3.1\Modelos.dll
+C:\Repos\Prueba\Servicios\bin\Debug\netcoreapp3.1\Negocios.dll
+C:\Repos\Prueba\Servicios\bin\Debug\netcoreapp3.1\Modelos.pdb
+C:\Repos\Prueba\Servicios\bin\Debug\netcoreapp3.1\Negocios.pdb
+C:\Repos\Prueba\Servicios\bin\Debug\netcoreapp3.1\Datos.pdb
+C:\Repos\Prueba\Servicios\obj\Debug\netcoreapp3.1\Servicios.csprojAssemblyReference.cache
+C:\Repos\Prueba\Servicios\obj\Debug\netcoreapp3.1\Servicios.AssemblyInfoInputs.cache
+C:\Repos\Prueba\Servicios\obj\Debug\netcoreapp3.1\Servicios.AssemblyInfo.cs
+C:\Repos\Prueba\Servicios\obj\Debug\netcoreapp3.1\Servicios.csproj.CoreCompileInputs.cache
+C:\Repos\Prueba\Servicios\obj\Debug\netcoreapp3.1\Servicios.csproj.CopyComplete
+C:\Repos\Prueba\Servicios\obj\Debug\netcoreapp3.1\Servicios.dll
+C:\Repos\Prueba\Servicios\obj\Debug\netcoreapp3.1\Servicios.pdb

@@ -400,7 +400,7 @@
           "bin/placeholder/Modelos.dll": {}
         }
       },
-      "Negocio/1.0.0": {
+      "Negocios/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
@@ -408,10 +408,24 @@
           "Modelos": "1.0.0"
         },
         "compile": {
-          "bin/placeholder/Negocio.dll": {}
+          "bin/placeholder/Negocios.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Negocio.dll": {}
+          "bin/placeholder/Negocios.dll": {}
+        }
+      },
+      "Servicios/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "Modelos": "1.0.0",
+          "Negocios": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/Servicios.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Servicios.dll": {}
         }
       }
     }
@@ -1244,16 +1258,21 @@
       "path": "../Modelos/Modelos.csproj",
       "msbuildProject": "../Modelos/Modelos.csproj"
     },
-    "Negocio/1.0.0": {
+    "Negocios/1.0.0": {
       "type": "project",
-      "path": "../Negocio/Negocio.csproj",
-      "msbuildProject": "../Negocio/Negocio.csproj"
+      "path": "../Negocio/Negocios.csproj",
+      "msbuildProject": "../Negocio/Negocios.csproj"
+    },
+    "Servicios/1.0.0": {
+      "type": "project",
+      "path": "../Servicios/Servicios.csproj",
+      "msbuildProject": "../Servicios/Servicios.csproj"
     }
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
       "Modelos >= 1.0.0",
-      "Negocio >= 1.0.0"
+      "Servicios >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -1294,8 +1313,8 @@
             "C:\\Repos\\Prueba\\Modelos\\Modelos.csproj": {
               "projectPath": "C:\\Repos\\Prueba\\Modelos\\Modelos.csproj"
             },
-            "C:\\Repos\\Prueba\\Negocio\\Negocio.csproj": {
-              "projectPath": "C:\\Repos\\Prueba\\Negocio\\Negocio.csproj"
+            "C:\\Repos\\Prueba\\Servicios\\Servicios.csproj": {
+              "projectPath": "C:\\Repos\\Prueba\\Servicios\\Servicios.csproj"
             }
           }
         }

@@ -1,0 +1,14 @@
+C:\Repos\Prueba\Negocio\bin\Debug\netcoreapp3.1\Negocios.deps.json
+C:\Repos\Prueba\Negocio\bin\Debug\netcoreapp3.1\Negocios.dll
+C:\Repos\Prueba\Negocio\bin\Debug\netcoreapp3.1\Negocios.pdb
+C:\Repos\Prueba\Negocio\bin\Debug\netcoreapp3.1\Datos.dll
+C:\Repos\Prueba\Negocio\bin\Debug\netcoreapp3.1\Modelos.dll
+C:\Repos\Prueba\Negocio\bin\Debug\netcoreapp3.1\Datos.pdb
+C:\Repos\Prueba\Negocio\bin\Debug\netcoreapp3.1\Modelos.pdb
+C:\Repos\Prueba\Negocio\obj\Debug\netcoreapp3.1\Negocios.csprojAssemblyReference.cache
+C:\Repos\Prueba\Negocio\obj\Debug\netcoreapp3.1\Negocios.AssemblyInfoInputs.cache
+C:\Repos\Prueba\Negocio\obj\Debug\netcoreapp3.1\Negocios.AssemblyInfo.cs
+C:\Repos\Prueba\Negocio\obj\Debug\netcoreapp3.1\Negocios.csproj.CoreCompileInputs.cache
+C:\Repos\Prueba\Negocio\obj\Debug\netcoreapp3.1\Negocios.csproj.CopyComplete
+C:\Repos\Prueba\Negocio\obj\Debug\netcoreapp3.1\Negocios.dll
+C:\Repos\Prueba\Negocio\obj\Debug\netcoreapp3.1\Negocios.pdb

@@ -14,9 +14,9 @@ namespace Datos
         /// </summary>
         private string cadenaConexion = "Data Source = DESKTOP-EFK49GE\\SQLEXPRESS; Initial Catalog = Prueba; Integrated Security = True";
 
-        public List<DTAutos> consultarAutos()
+        public List<AutoModelo> consultarAutos()
         {
-            List<DTAutos> listaAutos = new List<DTAutos>();
+            List<AutoModelo> listaAutos = new List<AutoModelo>();
             try
             {
                 using (SqlConnection connection = new SqlConnection(this.cadenaConexion))
@@ -30,7 +30,7 @@ namespace Datos
                         {
                             while (reader.Read())
                             {
-                                DTAutos autoModelo = new DTAutos();
+                                AutoModelo autoModelo = new AutoModelo();
                                 autoModelo.Id_Auto = (int)reader["Id_Auto"];
                                 autoModelo.Marca = (string)reader["Marca"];
                                 autoModelo.Color = (string)reader["Color"];
@@ -56,7 +56,7 @@ namespace Datos
             {
                 using (SqlConnection connection = new SqlConnection(this.cadenaConexion))
                 {
-                    String sql = "INSERT INTO Autos VALUES ('" + auto.Marca+ "', '" + auto.Color + "', " + auto.Modelo + ", " + auto.Precio + ")";
+                    String sql = "INSERT INTO Autos VALUES ('" + auto.Marca+ "', '" + auto.Color + "', " + auto.Modelo + ", " + auto.Precio + ", GETDATE(), 1)";
 
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {

@@ -1,18 +1,18 @@
 ﻿using System;
 using Microsoft.Data.SqlClient;
 using Modelos;
-using Negocio;
-using Negocio.Interfaces;
+using Modelos.Entidades;
+using Servicios;
 
 namespace Prueba
 {
-    class Program
+    class Prueba
     {
         static void Main(string[] args)
         {
             int opc, id;
-            AutoModelo autoModelo = new AutoModelo();
-            AutosNegocio autosNegocio = new AutosNegocio();
+            DTAuto autoModelo = new DTAuto();
+            AutoServicios autoServicio = new AutoServicios();
             do
             {
                 Console.Clear();
@@ -22,7 +22,7 @@ namespace Prueba
                 {
                     case 1:
                         Console.Clear();
-                        autosNegocio.consultar();
+                        autoServicio.consultar();
                         break;
                     case 2:
                         Console.Clear();
@@ -34,13 +34,13 @@ namespace Prueba
                         autoModelo.Modelo = int.Parse(Console.ReadLine());
                         Console.WriteLine("Ingresa el precio: ");
                         autoModelo.Precio = decimal.Parse(Console.ReadLine());
-                        autosNegocio.insertar(autoModelo);
+                        autoServicio.insertar(autoModelo);
                         break;
                     case 3:
                         Console.Clear();
                         Console.WriteLine("Ingresa el identificador: ");
                         autoModelo.Id_Auto = int.Parse(Console.ReadLine());
-                        autosNegocio.consultarId(autoModelo.Id_Auto);
+                        autoServicio.consultarId(autoModelo.Id_Auto);
                         Console.WriteLine("Ingresa la marca: ");
                         autoModelo.Marca = Console.ReadLine();
                         Console.WriteLine("Ingresa el color: ");
@@ -49,14 +49,14 @@ namespace Prueba
                         autoModelo.Modelo = int.Parse(Console.ReadLine());
                         Console.WriteLine("Ingresa el precio: ");
                         autoModelo.Precio = decimal.Parse(Console.ReadLine());
-                        autosNegocio.actualizar(autoModelo);
+                        autoServicio.actualizar(autoModelo);
                         Console.ReadLine();
                         break;
                     case 4:
                         Console.Clear();
                         Console.WriteLine("Ingresa el identificador: ");
                         id = int.Parse(Console.ReadLine());
-                        autosNegocio.eliminar(id);
+                        autoServicio.eliminar(id);
                         Console.ReadLine();
                         break;
                     case 5:

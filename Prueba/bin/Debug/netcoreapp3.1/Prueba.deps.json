@@ -9,7 +9,7 @@
       "Prueba/1.0.0": {
         "dependencies": {
           "Modelos": "1.0.0",
-          "Negocio": "1.0.0"
+          "Servicios": "1.0.0"
         },
         "runtime": {
           "Prueba.dll": {}
@@ -308,13 +308,22 @@
           "Modelos.dll": {}
         }
       },
-      "Negocio/1.0.0": {
+      "Negocios/1.0.0": {
         "dependencies": {
           "Datos": "1.0.0",
           "Modelos": "1.0.0"
         },
         "runtime": {
-          "Negocio.dll": {}
+          "Negocios.dll": {}
+        }
+      },
+      "Servicios/1.0.0": {
+        "dependencies": {
+          "Modelos": "1.0.0",
+          "Negocios": "1.0.0"
+        },
+        "runtime": {
+          "Servicios.dll": {}
         }
       }
     }
@@ -503,7 +512,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Negocio/1.0.0": {
+    "Negocios/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Servicios/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

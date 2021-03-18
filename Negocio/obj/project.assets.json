@@ -1245,9 +1245,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Repos\\Prueba\\Negocio\\Negocio.csproj",
-      "projectName": "Negocio",
-      "projectPath": "C:\\Repos\\Prueba\\Negocio\\Negocio.csproj",
+      "projectUniqueName": "C:\\Repos\\Prueba\\Negocio\\Negocios.csproj",
+      "projectName": "Negocios",
+      "projectPath": "C:\\Repos\\Prueba\\Negocio\\Negocios.csproj",
       "packagesPath": "C:\\Users\\HP\\.nuget\\packages\\",
       "outputPath": "C:\\Repos\\Prueba\\Negocio\\obj\\",
       "projectStyle": "PackageReference",

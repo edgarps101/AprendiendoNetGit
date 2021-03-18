@@ -1,4 +1,3 @@
-C:\Repos\Prueba\Prueba\bin\Debug\netcoreapp3.1\Negocio.dll
 C:\Repos\Prueba\Prueba\obj\Debug\netcoreapp3.1\Prueba.csprojAssemblyReference.cache
 C:\Repos\Prueba\Prueba\obj\Debug\netcoreapp3.1\Prueba.AssemblyInfoInputs.cache
 C:\Repos\Prueba\Prueba\obj\Debug\netcoreapp3.1\Prueba.AssemblyInfo.cs
@@ -35,7 +34,6 @@ C:\Repos\Prueba\Prueba\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\Sy
 C:\Repos\Prueba\Prueba\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
 C:\Repos\Prueba\Prueba\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Repos\Prueba\Prueba\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
-C:\Repos\Prueba\Prueba\bin\Debug\netcoreapp3.1\Negocio.pdb
 C:\Repos\Prueba\Prueba\obj\Debug\netcoreapp3.1\Prueba.csproj.CoreCompileInputs.cache
 C:\Repos\Prueba\Prueba\obj\Debug\netcoreapp3.1\Prueba.csproj.CopyComplete
 C:\Repos\Prueba\Prueba\obj\Debug\netcoreapp3.1\Prueba.dll
@@ -45,3 +43,7 @@ C:\Repos\Prueba\Prueba\bin\Debug\netcoreapp3.1\Modelos.dll
 C:\Repos\Prueba\Prueba\bin\Debug\netcoreapp3.1\Modelos.pdb
 C:\Repos\Prueba\Prueba\bin\Debug\netcoreapp3.1\Datos.dll
 C:\Repos\Prueba\Prueba\bin\Debug\netcoreapp3.1\Datos.pdb
+C:\Repos\Prueba\Prueba\bin\Debug\netcoreapp3.1\Negocios.dll
+C:\Repos\Prueba\Prueba\bin\Debug\netcoreapp3.1\Servicios.dll
+C:\Repos\Prueba\Prueba\bin\Debug\netcoreapp3.1\Servicios.pdb
+C:\Repos\Prueba\Prueba\bin\Debug\netcoreapp3.1\Negocios.pdb

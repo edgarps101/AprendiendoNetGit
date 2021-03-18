@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Negocio.Interfaces
 {
-    public interface IAutosNegocio : INegocioBase<AutoModelo>
+    public interface IAutoNegocio : INegocioBase<AutoModelo>
     {
         //void encender();
         //void apagar();
