@@ -4,6 +4,7 @@ using System.Text;
 
 namespace Modelos
 {
+	//Modelo de auto
     public class AutoModelo
     {
         public int Id_Auto { get; set; }
