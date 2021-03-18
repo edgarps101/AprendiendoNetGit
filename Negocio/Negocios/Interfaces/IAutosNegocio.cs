@@ -6,7 +6,7 @@ namespace Negocio.Interfaces
 {
     public interface IAutosNegocio : INegocioBase<AutosNegocio>
     {
-        void encender();
-        void apagar();
+        //void encender();
+        //void apagar();
     }
 }
