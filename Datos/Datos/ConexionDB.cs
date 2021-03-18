@@ -1,5 +1,6 @@
 ﻿using Microsoft.Data.SqlClient;
 using Modelos;
+using Modelos.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,14 +12,14 @@ namespace Datos
         /// <summary>
         /// Cadena de conexión base de datos local
         /// </summary>
-        string conexion = "Data Source = DESKTOP-EFK49GE\\SQLEXPRESS; Initial Catalog = Prueba; Integrated Security = True";
+        private string cadenaConexion = "Data Source = DESKTOP-EFK49GE\\SQLEXPRESS; Initial Catalog = Prueba; Integrated Security = True";
 
-        public List<AutoModelo> consultarAutos()
+        public List<DTAutos> consultarAutos()
         {
-            List<AutoModelo> listaAutos = new List<AutoModelo>();
+            List<DTAutos> listaAutos = new List<DTAutos>();
             try
             {
-                using (SqlConnection connection = new SqlConnection(this.conexion))
+                using (SqlConnection connection = new SqlConnection(this.cadenaConexion))
                 {
                     String sql = "SELECT * FROM Autos";
 
@@ -29,7 +30,7 @@ namespace Datos
                         {
                             while (reader.Read())
                             {
-                                AutoModelo autoModelo = new AutoModelo();
+                                DTAutos autoModelo = new DTAutos();
                                 autoModelo.Id_Auto = (int)reader["Id_Auto"];
                                 autoModelo.Marca = (string)reader["Marca"];
                                 autoModelo.Color = (string)reader["Color"];
@@ -53,7 +54,7 @@ namespace Datos
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection(this.conexion))
+                using (SqlConnection connection = new SqlConnection(this.cadenaConexion))
                 {
                     String sql = "INSERT INTO Autos VALUES ('" + auto.Marca+ "', '" + auto.Color + "', " + auto.Modelo + ", " + auto.Precio + ")";
 
@@ -76,7 +77,7 @@ namespace Datos
             AutoModelo autoModelo = new AutoModelo();
             try
             {
-                using (SqlConnection connection = new SqlConnection(this.conexion))
+                using (SqlConnection connection = new SqlConnection(this.cadenaConexion))
                 {
                     String sql = "SELECT * FROM Autos WHERE Id_Auto = " + id;
 
@@ -110,7 +111,7 @@ namespace Datos
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection(this.conexion))
+                using (SqlConnection connection = new SqlConnection(this.cadenaConexion))
                 {
                     String sql = "UPDATE Autos SET Marca = '" + auto.Marca + "', Color = '" + auto.Color + "', Modelo = " + auto.Modelo + ", Precio = " + auto.Precio + " WHERE Id_Auto = " + auto.Id_Auto;
 
@@ -132,7 +133,7 @@ namespace Datos
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection(this.conexion))
+                using (SqlConnection connection = new SqlConnection(this.cadenaConexion))
                 {
                     String sql = "DELETE FROM Autos WHERE Id_Auto = " + id;
 

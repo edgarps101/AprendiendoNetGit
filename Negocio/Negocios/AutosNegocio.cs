@@ -1,5 +1,6 @@
 ﻿using Datos;
 using Modelos;
+using Modelos.Entidades;
 using Negocio.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -15,13 +16,20 @@ namespace Negocio
         /// <returns>Regresa la lista completa de autos de la base de datos</returns>
         public List<AutoModelo> consultar()
         {
-            List<AutoModelo> listaAutos = new List<AutoModelo>();
+            List<DTAutos> listaAutos = new List<DTAutos>();
+            List<AutoModelo> listaAutosModelo = new List<AutoModelo>();
             try
             {
                 listaAutos = new ConexionDB().consultarAutos();
                 Console.WriteLine("=========================================\n");
-                foreach (AutoModelo auto in listaAutos)
+                foreach (DTAutos auto in listaAutos)
                 {
+                    var autoModelo = new AutoModelo() {
+                        Color = auto.Color,
+                        Marca = auto.Marca,
+                        Precio = auto.Modelo,
+                        Modelo = auto.Modelo
+                    };
                     Console.WriteLine("Identificador: " + auto.Id_Auto);
                     Console.WriteLine("Marca: " + auto.Marca);
                     Console.WriteLine("Color:" + auto.Color);
@@ -29,9 +37,10 @@ namespace Negocio
                     Console.WriteLine("Precio:" + auto.Precio);
                     Console.WriteLine();
                     Console.WriteLine("=========================================\n");
+                    listaAutosModelo.Add(autoModelo);
                 }
                 Console.ReadLine();
-                return listaAutos;
+                return listaAutosModelo;
             }
             catch (Exception e)
             {
