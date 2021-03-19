@@ -14,13 +14,13 @@ namespace Negocio
         /// Método para consultar todos los autos
         /// </summary>
         /// <returns>Regresa la lista completa de autos de la base de datos</returns>
-        public List<AutoModelo> consultar()
+        public List<DTAuto> consultar()
         {
-            List<AutoModelo> listaAutosModelo = new List<AutoModelo>();
+            List<DTAuto> listaDtAuto = new List<DTAuto>();
             try
             {
-                listaAutosModelo = new ConexionDB().consultarAutos();
-                return listaAutosModelo;
+                listaDtAuto = new ConexionDB().consultarAutos();
+                return listaDtAuto;
             }
             catch (Exception e)
             {
@@ -33,13 +33,13 @@ namespace Negocio
         /// </summary>
         /// <param name="id">identificador del auto</param>
         /// <returns>Retorna un onjeto de tipo AutoModelo</returns>
-        public AutoModelo consultarId(int id)
+        public DTAuto consultarId(int id)
         {
-            AutoModelo autoModelo = new AutoModelo();
+            DTAuto dtAuto = new DTAuto();
             try
             {
-                autoModelo = new ConexionDB().consultarAuto(id);
-                return autoModelo;
+                dtAuto = new ConexionDB().consultarAuto(id);
+                return dtAuto;
             }
             catch (Exception e)
             {
@@ -50,12 +50,12 @@ namespace Negocio
         /// <summary>
         /// Método para insertar un auto nuevo
         /// </summary>
-        /// <param name="autoModelo"></param>
-        public void insertar(AutoModelo autoModelo)
+        /// <param name="dtAuto"></param>
+        public void insertar(DTAuto dtAuto)
         {
             try
             {
-                new ConexionDB().insertarAuto(autoModelo);
+                new ConexionDB().insertarAuto(dtAuto);
             }
             catch (Exception e)
             {
@@ -66,12 +66,12 @@ namespace Negocio
         /// <summary>
         /// Método para actualizar un auto
         /// </summary>
-        /// <param name="autoModelo"></param>
-        public void actualizar(AutoModelo autoModelo)
+        /// <param name="dtAuto"></param>
+        public void actualizar(DTAuto dtAuto)
         {
             try
             {
-                new ConexionDB().actualizarAuto(autoModelo);
+                new ConexionDB().actualizarAuto(dtAuto);
             }
             catch (Exception e)
             {

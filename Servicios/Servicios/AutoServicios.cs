@@ -9,16 +9,16 @@ namespace Servicios
 {
     public class AutoServicios : IAutoServicio
     {
-        public List<DTAuto> consultar()
+        public List<AutoModelo> consultar()
         {
-            List<AutoModelo> listaAutoModelos = new List<AutoModelo>();
-            List<DTAuto> listaDTAuto = new List<DTAuto>();
+            List<AutoModelo> listaAutoModelo = new List<AutoModelo>();
+            List<DTAuto> listaDTAuto;
             try
             {
-                listaAutoModelos = new AutoNegocio().consultar();
-                foreach (AutoModelo auto in listaAutoModelos)
+                listaDTAuto = new AutoNegocio().consultar();
+                foreach (DTAuto auto in listaDTAuto)
                 {
-                    var dtAuto = new DTAuto()
+                    var autoModelo = new AutoModelo()
                     {
                         Id_Auto = auto.Id_Auto,
                         Marca = auto.Marca,
@@ -26,59 +26,22 @@ namespace Servicios
                         Modelo = auto.Modelo,
                         Precio = auto.Precio
                     };
-                    Console.WriteLine("Identificador: " + auto.Id_Auto);
-                    Console.WriteLine("Marca: " + auto.Marca);
-                    Console.WriteLine("Color:" + auto.Color);
-                    Console.WriteLine("Modelo:" + auto.Modelo);
-                    Console.WriteLine("Precio:" + auto.Precio);
-                    Console.WriteLine();
-                    Console.WriteLine("=========================================\n");
-                    listaDTAuto.Add(dtAuto);
+                    listaAutoModelo.Add(autoModelo);
                 }
-                Console.ReadLine();
-                return listaDTAuto;
+                return listaAutoModelo;
             }
             catch (Exception e)
             {
-                Console.WriteLine("Error al listar los carros " + e.Message);
                 throw;
             }
         }
 
-        public DTAuto consultarId(int id)
+        public AutoModelo consultarId(int id)
         {
-            AutoModelo autoModelo = new AutoModelo();
+            DTAuto dtAuto = new DTAuto();
             try
             {
-                autoModelo = new AutoNegocio().consultarId(id);
-                var dtAuto = new DTAuto()
-                {
-                    Id_Auto = autoModelo.Id_Auto,
-                    Marca = autoModelo.Marca,
-                    Color = autoModelo.Color,
-                    Modelo = autoModelo.Modelo,
-                    Precio = autoModelo.Precio
-                };
-                Console.WriteLine("=========================================\n");
-                Console.WriteLine("Identificador: " + autoModelo.Id_Auto);
-                Console.WriteLine("Marca: " + autoModelo.Marca);
-                Console.WriteLine("Color:" + autoModelo.Color);
-                Console.WriteLine("Modelo:" + autoModelo.Modelo);
-                Console.WriteLine("Precio:" + autoModelo.Precio);
-                Console.WriteLine();
-                Console.WriteLine("=========================================\n");
-                return dtAuto;
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("Error al buscar auto " + e.Message);
-                throw;
-            }
-        }
-        public void insertar(DTAuto dtAuto)
-        {
-            try
-            {
+                dtAuto = new AutoNegocio().consultarId(id);
                 var autoModelo = new AutoModelo()
                 {
                     Id_Auto = dtAuto.Id_Auto,
@@ -87,37 +50,60 @@ namespace Servicios
                     Modelo = dtAuto.Modelo,
                     Precio = dtAuto.Precio
                 };
-                new AutoNegocio().insertar(autoModelo);
-                Console.WriteLine("Auto agregado exitosamente\n");
-                Console.ReadLine();
+                Console.WriteLine("=========================================\n");
+                Console.WriteLine("Identificador: " + dtAuto.Id_Auto);
+                Console.WriteLine("Marca: " + dtAuto.Marca);
+                Console.WriteLine("Color:" + dtAuto.Color);
+                Console.WriteLine("Modelo:" + dtAuto.Modelo);
+                Console.WriteLine("Precio:" + dtAuto.Precio);
+                Console.WriteLine();
+                Console.WriteLine("=========================================\n");
+                return autoModelo;
             }
             catch (Exception e)
             {
-                Console.WriteLine("Error al agregar auto " + e.Message);
+                Console.WriteLine("Error al buscar auto " + e.Message);
                 throw;
             }
         }
-        public void actualizar(DTAuto dtAuto)
+        public void insertar(AutoModelo autoModelo)
         {
-            AutoModelo autoModelo2 = new AutoModelo();
             try
             {
-                autoModelo2 = new AutoNegocio().consultarId(dtAuto.Id_Auto);
-                var autoModelo = new AutoModelo()
+                var dtAuto = new DTAuto()
                 {
-                    Id_Auto = dtAuto.Id_Auto,
-                    Marca = dtAuto.Marca == "" ? autoModelo2.Marca : dtAuto.Marca,
-                    Color = dtAuto.Color == "" ? autoModelo2.Color : dtAuto.Color,
-                    Modelo = dtAuto.Modelo == 0 ? autoModelo2.Modelo : dtAuto.Modelo,
-                    Precio = dtAuto.Precio == 0 ? autoModelo2.Precio : dtAuto.Precio
+                    Id_Auto = autoModelo.Id_Auto,
+                    Marca = autoModelo.Marca,
+                    Color = autoModelo.Color,
+                    Modelo = autoModelo.Modelo,
+                    Precio = autoModelo.Precio
                 };
-                new AutoNegocio().actualizar(autoModelo);
-                Console.WriteLine("Auto actualizado exitosamente\n");
-                Console.ReadLine();
+                new AutoNegocio().insertar(dtAuto);
             }
             catch (Exception e)
             {
-                Console.WriteLine("Error al agregar auto " + e.Message);
+                throw;
+            }
+        }
+        public void actualizar(AutoModelo autoModelo)
+        {
+            DTAuto dtAuto2;
+            try
+            {
+                dtAuto2 = new AutoNegocio().consultarId(autoModelo.Id_Auto);
+                var dtAuto = new DTAuto()
+                {
+                    Id_Auto = autoModelo.Id_Auto,
+                    Marca = autoModelo.Marca == "" ? dtAuto2.Marca : autoModelo.Marca,
+                    Color = autoModelo.Color == "" ? dtAuto2.Color : autoModelo.Color,
+                    Modelo = autoModelo.Modelo == 0 ? dtAuto2.Modelo : autoModelo.Modelo,
+                    Precio = autoModelo.Precio == 0 ? dtAuto2.Precio : autoModelo.Precio
+                };
+                new AutoNegocio().actualizar(dtAuto);
+            }
+            catch (Exception e)
+            {
+                throw;
             }
         }
 
@@ -126,11 +112,10 @@ namespace Servicios
             try
             {
                 new AutoNegocio().eliminar(id);
-                Console.WriteLine("Auto eliminado exitosamente\n");
             }
             catch (Exception e)
             {
-                Console.WriteLine("Error al eliminar auto " + e.Message);
+                throw;
             }
         }
     }

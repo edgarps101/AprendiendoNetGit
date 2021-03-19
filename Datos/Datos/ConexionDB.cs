@@ -14,9 +14,9 @@ namespace Datos
         /// </summary>
         private string cadenaConexion = "Data Source = DESKTOP-EFK49GE\\SQLEXPRESS; Initial Catalog = Prueba; Integrated Security = True";
 
-        public List<AutoModelo> consultarAutos()
+        public List<DTAuto> consultarAutos()
         {
-            List<AutoModelo> listaAutos = new List<AutoModelo>();
+            List<DTAuto> listaAutos = new List<DTAuto>();
             try
             {
                 using (SqlConnection connection = new SqlConnection(this.cadenaConexion))
@@ -30,7 +30,7 @@ namespace Datos
                         {
                             while (reader.Read())
                             {
-                                AutoModelo autoModelo = new AutoModelo();
+                                DTAuto autoModelo = new DTAuto();
                                 autoModelo.Id_Auto = (int)reader["Id_Auto"];
                                 autoModelo.Marca = (string)reader["Marca"];
                                 autoModelo.Color = (string)reader["Color"];
@@ -50,7 +50,7 @@ namespace Datos
             }
         }
 
-        public void insertarAuto(AutoModelo auto)
+        public void insertarAuto(DTAuto auto)
         {
             try
             {
@@ -72,9 +72,9 @@ namespace Datos
             }
         }
 
-        public AutoModelo consultarAuto(int id)
+        public DTAuto consultarAuto(int id)
         {
-            AutoModelo autoModelo = new AutoModelo();
+            DTAuto autoModelo = new DTAuto();
             try
             {
                 using (SqlConnection connection = new SqlConnection(this.cadenaConexion))
@@ -88,7 +88,6 @@ namespace Datos
                         {
                             while (reader.Read())
                             {
-                                //AutoModelo autoModelo = new AutoModelo();
                                 autoModelo.Id_Auto = (int)reader["Id_Auto"];
                                 autoModelo.Marca = (string)reader["Marca"];
                                 autoModelo.Color = (string)reader["Color"];
@@ -107,7 +106,7 @@ namespace Datos
             }
         }
 
-        public void actualizarAuto(AutoModelo auto)
+        public void actualizarAuto(DTAuto auto)
         {
             try
             {
