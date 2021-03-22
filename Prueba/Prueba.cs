@@ -11,7 +11,7 @@ namespace Prueba
         static void Main(string[] args)
         {
             int opc, id;
-            DTAuto autoModelo = new DTAuto();
+            AutoModelo autoModelo = new AutoModelo();
             AutoServicios autoServicio = new AutoServicios();
             do
             {
