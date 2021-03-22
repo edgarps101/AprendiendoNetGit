@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Servicios.Servicios.Interfaces
 {
-    public interface IAutoServicio : IServicioBase<AutoModelo>
+    public interface IAutoServicio : IBaseServicio<AutoModelo>
     {
     }
 }

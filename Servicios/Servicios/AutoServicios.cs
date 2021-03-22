@@ -1,6 +1,7 @@
 ﻿using Modelos;
 using Modelos.Entidades;
 using Negocio;
+using Negocio.Interfaces;
 using Servicios.Servicios.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -9,13 +10,20 @@ namespace Servicios
 {
     public class AutoServicios : IAutoServicio
     {
+        private readonly IAutoNegocio autoNegocio;
+
+        public AutoServicios(IAutoNegocio autoNegocio)
+        {
+            this.autoNegocio = autoNegocio;
+        }
+
         public List<AutoModelo> consultar()
         {
             List<AutoModelo> listaAutoModelo = new List<AutoModelo>();
             List<DTAuto> listaDTAuto;
             try
             {
-                listaDTAuto = new AutoNegocio().consultar();
+                listaDTAuto = autoNegocio.consultar();
                 foreach (DTAuto auto in listaDTAuto)
                 {
                     var autoModelo = new AutoModelo()
@@ -41,7 +49,7 @@ namespace Servicios
             DTAuto dtAuto = new DTAuto();
             try
             {
-                dtAuto = new AutoNegocio().consultarId(id);
+                dtAuto = autoNegocio.consultarId(id);
                 var autoModelo = new AutoModelo()
                 {
                     Id_Auto = dtAuto.Id_Auto,
@@ -78,7 +86,7 @@ namespace Servicios
                     Modelo = autoModelo.Modelo,
                     Precio = autoModelo.Precio
                 };
-                new AutoNegocio().insertar(dtAuto);
+                autoNegocio.insertar(dtAuto);
             }
             catch (Exception e)
             {
@@ -90,7 +98,7 @@ namespace Servicios
             DTAuto dtAuto2;
             try
             {
-                dtAuto2 = new AutoNegocio().consultarId(autoModelo.Id_Auto);
+                dtAuto2 = autoNegocio.consultarId(autoModelo.Id_Auto);
                 var dtAuto = new DTAuto()
                 {
                     Id_Auto = autoModelo.Id_Auto,
@@ -99,7 +107,7 @@ namespace Servicios
                     Modelo = autoModelo.Modelo == 0 ? dtAuto2.Modelo : autoModelo.Modelo,
                     Precio = autoModelo.Precio == 0 ? dtAuto2.Precio : autoModelo.Precio
                 };
-                new AutoNegocio().actualizar(dtAuto);
+                autoNegocio.actualizar(dtAuto);
             }
             catch (Exception e)
             {
@@ -111,7 +119,7 @@ namespace Servicios
         {
             try
             {
-                new AutoNegocio().eliminar(id);
+                autoNegocio.eliminar(id);
             }
             catch (Exception e)
             {

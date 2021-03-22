@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Negocio.Interfaces
 {
-    public interface IAutoNegocio : INegocioBase<DTAuto>
+    public interface IAutoNegocio : IBaseNegocio<DTAuto>
     {
         //void encender();
         //void apagar();

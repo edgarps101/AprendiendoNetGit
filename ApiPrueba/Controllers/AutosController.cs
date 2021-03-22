@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Modelos;
 using Servicios;
+using Servicios.Servicios.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,34 +13,41 @@ namespace ApiPrueba.Controllers
     [ApiController]
     public class AutosController : ControllerBase
     {
+        private readonly IAutoServicio servicioAuto;
+
+        public AutosController(IAutoServicio servicioAuto)
+        {
+            this.servicioAuto = servicioAuto;
+        }
+
         [HttpGet]
         public List<AutoModelo> Get()
         {
-            return new AutoServicios().consultar();
+            return servicioAuto.consultar();
         }
 
         [HttpGet("{id}")]
         public AutoModelo Get(int id)
         {
-            return new AutoServicios().consultarId(id);
+            return servicioAuto.consultarId(id);
         }
 
         [HttpPost]
         public void Post([FromBody] AutoModelo autoModelo)
         {
-            new AutoServicios().insertar(autoModelo);
+            servicioAuto.insertar(autoModelo);
         }
 
         [HttpPut]
         public void Put([FromBody] AutoModelo autoModelo)
         {
-            new AutoServicios().actualizar(autoModelo);
+            servicioAuto.actualizar(autoModelo);
         }
 
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            new AutoServicios().eliminar(id);
+            servicioAuto.eliminar(id);
         }
     }
 }
