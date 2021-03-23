@@ -27,8 +27,9 @@ namespace ApiPrueba
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-
             services.RegistrarServicios();
+            //var conexion = Configuration.GetConnectionString("conexionDB");
+            //services.AddDbContext<conexionDB>(options => options.UseSqlServer(Configuration.GetConnectionString("conexionDB")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

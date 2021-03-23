@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "IwVZPq0iqUB6C3ewLDib1obEGkvTIGVnSvUzXmEGHBcbWeTpXjCfm9HxmEru1kSVQdQirIALHzqRB1kP6X6QMA==",
+  "dgSpecHash": "cKFYiIMZhkd+2/nubgvtHVo8j+1Deuprf+tMjhqlsCfrjqEoS921o02l3JSMtnh3XldTeAxBQdCKrCQxzlY4tQ==",
   "success": true,
   "projectFilePath": "C:\\Repos\\Prueba\\Datos\\Datos.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\HP\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.2\\microsoft.data.sqlclient.2.1.2.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.1.1\\microsoft.data.sqlclient.sni.runtime.2.1.1.nupkg.sha512",
+    "C:\\Users\\HP\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\3.1.0\\microsoft.extensions.dependencyinjection.abstractions.3.1.0.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\microsoft.identity.client\\4.21.1\\microsoft.identity.client.4.21.1.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\6.8.0\\microsoft.identitymodel.jsonwebtokens.6.8.0.nupkg.sha512",
     "C:\\Users\\HP\\.nuget\\packages\\microsoft.identitymodel.logging\\6.8.0\\microsoft.identitymodel.logging.6.8.0.nupkg.sha512",

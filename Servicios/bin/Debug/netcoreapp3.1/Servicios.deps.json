@@ -306,6 +306,7 @@
       "Datos/1.0.0": {
         "dependencies": {
           "Microsoft.Data.SqlClient": "2.1.2",
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "3.1.0",
           "Modelos": "1.0.0"
         },
         "runtime": {

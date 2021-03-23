@@ -53,6 +53,10 @@
             "Microsoft.Data.SqlClient": {
               "target": "Package",
               "version": "[2.1.2, )"
+            },
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[3.1.0, )"
             }
           },
           "imports": [
