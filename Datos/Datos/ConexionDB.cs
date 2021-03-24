@@ -1,6 +1,6 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using System.Linq;
+using Microsoft.Data.SqlClient;
 using Modelos;
-using Modelos.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,118 +13,76 @@ namespace Datos
         /// Cadena de conexión base de datos local
         /// </summary>
         private string cadenaConexion = "Data Source = DESKTOP-EFK49GE\\SQLEXPRESS; Initial Catalog = Prueba; Integrated Security = True";
+        private readonly PruebaContext _context;
 
-        public List<DTAuto> consultarAutos()
+        public ConexionDB(PruebaContext context)
         {
-            List<DTAuto> listaAutos = new List<DTAuto>();
+            this._context = context;
+        }
+
+        public List<Auto> consultarAutos()
+        {
             try
             {
-                using (SqlConnection connection = new SqlConnection(this.cadenaConexion))
-                {
-                    String sql = "SELECT * FROM Autos";
+                var query = from au in _context.Autos
+                            orderby au.Color
+                            select au;
 
-                    using (SqlCommand command = new SqlCommand(sql, connection))
-                    {
-                        connection.Open();
-                        using (SqlDataReader reader = command.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                DTAuto autoModelo = new DTAuto();
-                                autoModelo.Id_Auto = (int)reader["Id_Auto"];
-                                autoModelo.Marca = (string)reader["Marca"];
-                                autoModelo.Color = (string)reader["Color"];
-                                autoModelo.Modelo = (int)reader["Modelo"];
-                                autoModelo.Precio = (decimal)reader["Precio"];
-                                listaAutos.Add(autoModelo);
-                            }
-                        }
-                        connection.Close();
-                    }
-                }
-                return listaAutos;
+                var autos = query.ToList();
+                return autos;
             }
             catch (SqlException e)
             {
-                throw;
+                throw e;
             }
         }
 
-        public void insertarAuto(DTAuto auto)
+        public Auto consultarAuto(int id)
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection(this.cadenaConexion))
-                {
-                    String sql = "INSERT INTO Autos VALUES ('" + auto.Marca+ "', '" + auto.Color + "', " + auto.Modelo + ", " + auto.Precio + ", GETDATE(), 1)";
+                var query = from au in _context.Autos
+                            where au.IdAuto == id
+                            select au;
 
-                    using (SqlCommand command = new SqlCommand(sql, connection))
-                    {
-                        connection.Open();
-                        command.ExecuteNonQuery();
-                        connection.Close();
-                    }
-                }
+                var auto = query.FirstOrDefault();
+                return auto;
             }
             catch (SqlException e)
             {
-                throw;
+                throw e;
             }
         }
 
-        public DTAuto consultarAuto(int id)
+        public void insertarAuto(Auto auto)
         {
-            DTAuto autoModelo = new DTAuto();
             try
             {
-                using (SqlConnection connection = new SqlConnection(this.cadenaConexion))
-                {
-                    String sql = "SELECT * FROM Autos WHERE Id_Auto = " + id;
+                _context.Autos.Add(auto);
+                _context.SaveChanges();
 
-                    using (SqlCommand command = new SqlCommand(sql, connection))
-                    {
-                        connection.Open();
-                        using (SqlDataReader reader = command.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                autoModelo.Id_Auto = (int)reader["Id_Auto"];
-                                autoModelo.Marca = (string)reader["Marca"];
-                                autoModelo.Color = (string)reader["Color"];
-                                autoModelo.Modelo = (int)reader["Modelo"];
-                                autoModelo.Precio = (decimal)reader["Precio"];
-                            }
-                        }
-                        connection.Close();
-                    }
-                }
-                return autoModelo;
             }
             catch (SqlException e)
             {
-                throw;
+                throw e;
             }
         }
 
-        public void actualizarAuto(DTAuto auto)
+        public void actualizarAuto(Auto auto)
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection(this.cadenaConexion))
-                {
-                    String sql = "UPDATE Autos SET Marca = '" + auto.Marca + "', Color = '" + auto.Color + "', Modelo = " + auto.Modelo + ", Precio = " + auto.Precio + " WHERE Id_Auto = " + auto.Id_Auto;
-
-                    using (SqlCommand command = new SqlCommand(sql, connection))
-                    {
-                        connection.Open();
-                        command.ExecuteNonQuery();
-                        connection.Close();
-                    }
-                }
+                var oldAuto = _context.Autos.Where(x => x.IdAuto == auto.IdAuto).FirstOrDefault();
+                oldAuto.Marca = auto.Marca;
+                oldAuto.Color = auto.Color;
+                oldAuto.Modelo = auto.Modelo;
+                oldAuto.Precio = auto.Precio;
+                oldAuto.Activo = auto.Activo;
+                _context.SaveChanges();
             }
             catch (SqlException e)
             {
-                throw;
+                throw e;
             }
         }
 
@@ -132,21 +90,13 @@ namespace Datos
         {
             try
             {
-                using (SqlConnection connection = new SqlConnection(this.cadenaConexion))
-                {
-                    String sql = "DELETE FROM Autos WHERE Id_Auto = " + id;
-
-                    using (SqlCommand command = new SqlCommand(sql, connection))
-                    {
-                        connection.Open();
-                        command.ExecuteNonQuery();
-                        connection.Close();
-                    }
-                }
+                var auto = _context.Autos.FirstOrDefault(x => x.IdAuto == id);
+                _context.Autos.Remove(auto);
+                _context.SaveChanges();
             }
             catch (SqlException e)
             {
-                throw;
+                throw e;
             }
         }
     }

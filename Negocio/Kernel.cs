@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Datos;
+using Microsoft.Extensions.DependencyInjection;
 using Negocio;
 using Negocio.Interfaces;
 using System;
@@ -12,6 +13,7 @@ namespace Negocios
         public static IServiceCollection RegistrarNegocios(this IServiceCollection services)
         {
             services.AddTransient<IAutoNegocio, AutoNegocio>();
+            services.RegistrarDatos();
             return services;
         }
     }

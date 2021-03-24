@@ -6,11 +6,13 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
 using Servicios;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Datos;
 
 namespace ApiPrueba
 {
@@ -28,8 +30,9 @@ namespace ApiPrueba
         {
             services.AddControllers();
             services.RegistrarServicios();
-            //var conexion = Configuration.GetConnectionString("conexionDB");
-            //services.AddDbContext<conexionDB>(options => options.UseSqlServer(Configuration.GetConnectionString("conexionDB")));
+
+            services.AddDbContext<PruebaContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("conexionDB")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

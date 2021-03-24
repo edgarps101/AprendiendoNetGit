@@ -1,7 +1,6 @@
 ﻿using System;
 using Microsoft.Data.SqlClient;
 using Modelos;
-using Modelos.Entidades;
 using Servicios;
 
 namespace Prueba

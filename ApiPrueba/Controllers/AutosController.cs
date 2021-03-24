@@ -21,25 +21,25 @@ namespace ApiPrueba.Controllers
         }
 
         [HttpGet]
-        public List<AutoModelo> Get()
+        public List<AutoModel> Get()
         {
             return servicioAuto.consultar();
         }
 
         [HttpGet("{id}")]
-        public AutoModelo Get(int id)
+        public AutoModel Get(int id)
         {
             return servicioAuto.consultarId(id);
         }
 
         [HttpPost]
-        public void Post([FromBody] AutoModelo autoModelo)
+        public void Post([FromBody] AutoModel autoModelo)
         {
             servicioAuto.insertar(autoModelo);
         }
 
         [HttpPut]
-        public void Put([FromBody] AutoModelo autoModelo)
+        public void Put([FromBody] AutoModel autoModelo)
         {
             servicioAuto.actualizar(autoModelo);
         }

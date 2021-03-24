@@ -1,4 +1,6 @@
 C:\Repos\Prueba\Modelos\bin\Debug\netcoreapp3.1\Modelos.deps.json
+C:\Repos\Prueba\Modelos\bin\Debug\netcoreapp3.1\Modelos.runtimeconfig.json
+C:\Repos\Prueba\Modelos\bin\Debug\netcoreapp3.1\Modelos.runtimeconfig.dev.json
 C:\Repos\Prueba\Modelos\bin\Debug\netcoreapp3.1\Modelos.dll
 C:\Repos\Prueba\Modelos\bin\Debug\netcoreapp3.1\Modelos.pdb
 C:\Repos\Prueba\Modelos\obj\Debug\netcoreapp3.1\Modelos.AssemblyInfoInputs.cache
@@ -6,3 +8,5 @@ C:\Repos\Prueba\Modelos\obj\Debug\netcoreapp3.1\Modelos.AssemblyInfo.cs
 C:\Repos\Prueba\Modelos\obj\Debug\netcoreapp3.1\Modelos.csproj.CoreCompileInputs.cache
 C:\Repos\Prueba\Modelos\obj\Debug\netcoreapp3.1\Modelos.dll
 C:\Repos\Prueba\Modelos\obj\Debug\netcoreapp3.1\Modelos.pdb
+C:\Repos\Prueba\Modelos\obj\Debug\netcoreapp3.1\Modelos.genruntimeconfig.cache
+C:\Repos\Prueba\Modelos\obj\Debug\netcoreapp3.1\Modelos.csprojAssemblyReference.cache

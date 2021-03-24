@@ -1,5 +1,4 @@
 ﻿using Modelos;
-using Modelos.Entidades;
 using Negocio;
 using Negocio.Interfaces;
 using Servicios.Servicios.Interfaces;
@@ -17,101 +16,100 @@ namespace Servicios
             this.autoNegocio = autoNegocio;
         }
 
-        public List<AutoModelo> consultar()
+        public List<AutoModel> consultar()
         {
-            List<AutoModelo> listaAutoModelo = new List<AutoModelo>();
-            List<DTAuto> listaDTAuto;
+            List<Auto> listaAutoDTO = new List<Auto>();
+            List<AutoModel> listaAutoModel = new List<AutoModel>();
             try
             {
-                listaDTAuto = autoNegocio.consultar();
-                foreach (DTAuto auto in listaDTAuto)
+                listaAutoDTO = autoNegocio.consultar();
+                foreach (Auto autoDTO in listaAutoDTO)
                 {
-                    var autoModelo = new AutoModelo()
+                    var autoModelo = new AutoModel()
                     {
-                        Id_Auto = auto.Id_Auto,
-                        Marca = auto.Marca,
-                        Color = auto.Color,
-                        Modelo = auto.Modelo,
-                        Precio = auto.Precio
+                        IdAuto = autoDTO.IdAuto,
+                        Marca = autoDTO.Marca,
+                        Color = autoDTO.Color,
+                        Modelo = autoDTO.Modelo,
+                        Precio = autoDTO.Precio,
+                        FechaMovimiento = autoDTO.FechaMovimiento,
+                        Activo = autoDTO.Activo
                     };
-                    listaAutoModelo.Add(autoModelo);
+                    listaAutoModel.Add(autoModelo);
                 }
-                return listaAutoModelo;
+                return listaAutoModel;
             }
             catch (Exception e)
             {
-                throw;
+                throw e;
             }
         }
 
-        public AutoModelo consultarId(int id)
+        public AutoModel consultarId(int id)
         {
-            DTAuto dtAuto = new DTAuto();
+            Auto AutoDTO = new Auto();
             try
             {
-                dtAuto = autoNegocio.consultarId(id);
-                var autoModelo = new AutoModelo()
+                AutoDTO = autoNegocio.consultarId(id);
+                var autoModelo = new AutoModel()
                 {
-                    Id_Auto = dtAuto.Id_Auto,
-                    Marca = dtAuto.Marca,
-                    Color = dtAuto.Color,
-                    Modelo = dtAuto.Modelo,
-                    Precio = dtAuto.Precio
+                    IdAuto = AutoDTO.IdAuto,
+                    Marca = AutoDTO.Marca,
+                    Color = AutoDTO.Color,
+                    Modelo = AutoDTO.Modelo,
+                    Precio = AutoDTO.Precio,
+                    FechaMovimiento = AutoDTO.FechaMovimiento,
+                    Activo = AutoDTO.Activo
                 };
-                Console.WriteLine("=========================================\n");
-                Console.WriteLine("Identificador: " + dtAuto.Id_Auto);
-                Console.WriteLine("Marca: " + dtAuto.Marca);
-                Console.WriteLine("Color:" + dtAuto.Color);
-                Console.WriteLine("Modelo:" + dtAuto.Modelo);
-                Console.WriteLine("Precio:" + dtAuto.Precio);
-                Console.WriteLine();
-                Console.WriteLine("=========================================\n");
                 return autoModelo;
             }
             catch (Exception e)
             {
-                Console.WriteLine("Error al buscar auto " + e.Message);
-                throw;
+                throw e;
             }
         }
-        public void insertar(AutoModelo autoModelo)
+        public void insertar(AutoModel autoModelo)
         {
             try
             {
-                var dtAuto = new DTAuto()
+                var AutoDTO = new Auto()
                 {
-                    Id_Auto = autoModelo.Id_Auto,
+                    IdAuto = autoModelo.IdAuto,
                     Marca = autoModelo.Marca,
                     Color = autoModelo.Color,
                     Modelo = autoModelo.Modelo,
-                    Precio = autoModelo.Precio
+                    Precio = autoModelo.Precio,
+                    FechaMovimiento = DateTime.Now,
+                    Activo = autoModelo.Activo
                 };
-                autoNegocio.insertar(dtAuto);
+                autoNegocio.insertar(AutoDTO);
             }
             catch (Exception e)
             {
-                throw;
+                throw e;
             }
         }
-        public void actualizar(AutoModelo autoModelo)
+        public void actualizar(AutoModel autoModelo)
         {
-            DTAuto dtAuto2;
+            Auto autoDTO = new Auto();
             try
             {
-                dtAuto2 = autoNegocio.consultarId(autoModelo.Id_Auto);
-                var dtAuto = new DTAuto()
+                autoDTO = autoNegocio.consultarId(autoModelo.IdAuto);
+                var AutoDTO = new Auto()
                 {
-                    Id_Auto = autoModelo.Id_Auto,
-                    Marca = autoModelo.Marca == "" ? dtAuto2.Marca : autoModelo.Marca,
-                    Color = autoModelo.Color == "" ? dtAuto2.Color : autoModelo.Color,
-                    Modelo = autoModelo.Modelo == 0 ? dtAuto2.Modelo : autoModelo.Modelo,
-                    Precio = autoModelo.Precio == 0 ? dtAuto2.Precio : autoModelo.Precio
+                    IdAuto = autoModelo.IdAuto,
+                    Marca = autoModelo.Marca == "" ? autoDTO.Marca : autoModelo.Marca,
+                    Color = autoModelo.Color == "" ? autoDTO.Color : autoModelo.Color,
+                    Modelo = autoModelo.Modelo == 0 ? autoDTO.Modelo : autoModelo.Modelo,
+                    Precio = autoModelo.Precio == 0 ? autoDTO.Precio : autoModelo.Precio,
+                    FechaMovimiento = autoDTO.FechaMovimiento,
+                    Activo = autoModelo.Activo
                 };
-                autoNegocio.actualizar(dtAuto);
+                autoNegocio.actualizar(AutoDTO);
             }
             catch (Exception e)
             {
-                throw;
+                throw e;
             }
         }
 
@@ -123,7 +121,7 @@ namespace Servicios
             }
             catch (Exception e)
             {
-                throw;
+                throw e;
             }
         }
     }

@@ -1,6 +1,5 @@
 ﻿using Datos;
 using Modelos;
-using Modelos.Entidades;
 using Negocio.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -10,21 +9,28 @@ namespace Negocio
 {
     public class AutoNegocio : IAutoNegocio
     {
+        private readonly ConexionDB conexionDB;
+
+        public AutoNegocio(ConexionDB conexionDB)
+        {
+            this.conexionDB = conexionDB;
+        }
+
         /// <summary>
         /// Método para consultar todos los autos
         /// </summary>
         /// <returns>Regresa la lista completa de autos de la base de datos</returns>
-        public List<DTAuto> consultar()
+        public List<Auto> consultar()
         {
-            List<DTAuto> listaDtAuto = new List<DTAuto>();
+            List<Auto> listaDtAuto = new List<Auto>();
             try
             {
-                listaDtAuto = new ConexionDB().consultarAutos();
+                listaDtAuto = conexionDB.consultarAutos();
                 return listaDtAuto;
             }
             catch (Exception e)
             {
-                throw;
+                throw e;
             }
         }
 
@@ -33,49 +39,49 @@ namespace Negocio
         /// </summary>
         /// <param name="id">identificador del auto</param>
         /// <returns>Retorna un onjeto de tipo AutoModelo</returns>
-        public DTAuto consultarId(int id)
+        public Auto consultarId(int id)
         {
-            DTAuto dtAuto = new DTAuto();
+            Auto autoDTO = new Auto();
             try
             {
-                dtAuto = new ConexionDB().consultarAuto(id);
-                return dtAuto;
+                autoDTO = conexionDB.consultarAuto(id);
+                return autoDTO;
             }
             catch (Exception e)
             {
-                throw;
+                throw e;
             }
         }
         
         /// <summary>
         /// Método para insertar un auto nuevo
         /// </summary>
-        /// <param name="dtAuto"></param>
-        public void insertar(DTAuto dtAuto)
+        /// <param name="autoDTO"></param>
+        public void insertar(Auto autoDTO)
         {
             try
             {
-                new ConexionDB().insertarAuto(dtAuto);
+                conexionDB.insertarAuto(autoDTO);
             }
             catch (Exception e)
             {
-                throw;
+                throw e;
             }
         }
 
         /// <summary>
         /// Método para actualizar un auto
         /// </summary>
-        /// <param name="dtAuto"></param>
-        public void actualizar(DTAuto dtAuto)
+        /// <param name="autoDTO"></param>
+        public void actualizar(Auto autoDTO)
         {
             try
             {
-                new ConexionDB().actualizarAuto(dtAuto);
+                conexionDB.actualizarAuto(autoDTO);
             }
             catch (Exception e)
             {
-                throw;
+                throw e;
             }
         }
 
@@ -87,11 +93,11 @@ namespace Negocio
         {
             try
             {
-                new ConexionDB().eliminarAuto(id);
+                conexionDB.eliminarAuto(id);
             }
             catch (Exception e)
             {
-                throw;
+                throw e;
             }
         }
     }
