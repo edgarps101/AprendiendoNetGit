@@ -1,4 +1,5 @@
 ﻿using Datos;
+using System.Linq;
 using Modelos;
 using Negocio.Interfaces;
 using System;
@@ -9,11 +10,11 @@ namespace Negocio
 {
     public class AutoNegocio : IAutoNegocio
     {
-        private readonly ConexionDB conexionDB;
+        private readonly PruebaContext _context;
 
-        public AutoNegocio(ConexionDB conexionDB)
+        public AutoNegocio(PruebaContext context)
         {
-            this.conexionDB = conexionDB;
+            this._context = context;
         }
 
         /// <summary>
@@ -22,11 +23,13 @@ namespace Negocio
         /// <returns>Regresa la lista completa de autos de la base de datos</returns>
         public List<Auto> consultar()
         {
-            List<Auto> listaDtAuto = new List<Auto>();
             try
             {
-                listaDtAuto = conexionDB.consultarAutos();
-                return listaDtAuto;
+                var query = from au in _context.Autos
+                            select au;
+
+                var autos = query.ToList();
+                return autos;
             }
             catch (Exception e)
             {
@@ -41,11 +44,14 @@ namespace Negocio
         /// <returns>Retorna un onjeto de tipo AutoModelo</returns>
         public Auto consultarId(int id)
         {
-            Auto autoDTO = new Auto();
             try
             {
-                autoDTO = conexionDB.consultarAuto(id);
-                return autoDTO;
+                var query = from au in _context.Autos
+                            where au.IdAuto == id
+                            select au;
+
+                var auto = query.FirstOrDefault();
+                return auto;
             }
             catch (Exception e)
             {
@@ -56,12 +62,14 @@ namespace Negocio
         /// <summary>
         /// Método para insertar un auto nuevo
         /// </summary>
-        /// <param name="autoDTO"></param>
-        public void insertar(Auto autoDTO)
+        /// <param name="auto"></param>
+        public void insertar(Auto auto)
         {
             try
             {
-                conexionDB.insertarAuto(autoDTO);
+                _context.Autos.Add(auto);
+                _context.SaveChanges();
+
             }
             catch (Exception e)
             {
@@ -72,12 +80,18 @@ namespace Negocio
         /// <summary>
         /// Método para actualizar un auto
         /// </summary>
-        /// <param name="autoDTO"></param>
-        public void actualizar(Auto autoDTO)
+        /// <param name="auto"></param>
+        public void actualizar(Auto auto)
         {
             try
             {
-                conexionDB.actualizarAuto(autoDTO);
+                var oldAuto = _context.Autos.Where(x => x.IdAuto == auto.IdAuto).FirstOrDefault();
+                oldAuto.Marca = auto.Marca;
+                oldAuto.Color = auto.Color;
+                oldAuto.Modelo = auto.Modelo;
+                oldAuto.Precio = auto.Precio;
+                oldAuto.Activo = auto.Activo;
+                _context.SaveChanges();
             }
             catch (Exception e)
             {
@@ -93,7 +107,9 @@ namespace Negocio
         {
             try
             {
-                conexionDB.eliminarAuto(id);
+                var auto = _context.Autos.FirstOrDefault(x => x.IdAuto == id);
+                _context.Autos.Remove(auto);
+                _context.SaveChanges();
             }
             catch (Exception e)
             {

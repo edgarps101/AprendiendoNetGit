@@ -13,7 +13,6 @@ namespace Negocios
         public static IServiceCollection RegistrarNegocios(this IServiceCollection services)
         {
             services.AddTransient<IAutoNegocio, AutoNegocio>();
-            services.RegistrarDatos();
             return services;
         }
     }
