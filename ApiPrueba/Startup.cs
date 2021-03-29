@@ -30,6 +30,7 @@ namespace ApiPrueba
         {
             services.AddControllers();
             services.RegistrarServicios();
+            services.AddCors();
 
             services.AddDbContext<PruebaContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("conexionDB")));
@@ -42,6 +43,13 @@ namespace ApiPrueba
             {
                 app.UseDeveloperExceptionPage();
             }
+            
+            app.UseCors(builder => builder
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                .SetIsOriginAllowed((host) => true)
+                .AllowCredentials()
+            );
 
             app.UseHttpsRedirection();
 

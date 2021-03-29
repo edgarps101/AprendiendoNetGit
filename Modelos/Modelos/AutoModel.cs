@@ -18,16 +18,5 @@ namespace Modelos
         public AutoModel()
         {
         }
-
-        //public AutoModel(int idAuto, string marca, string color, int modelo, decimal precio, DateTime fechaMovimiento, bool activo)
-        //{
-        //    this.IdAuto = idAuto;
-        //    this.Marca = marca;
-        //    this.Color = color;
-        //    this.Modelo = modelo;
-        //    this.Precio = precio;
-        //    this.FechaMovimiento = fechaMovimiento;
-        //    this.Activo = activo;
-        //}
     }
 }

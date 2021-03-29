@@ -1,0 +1,95 @@
+﻿@*@model List<Modelos.AutoModel>*@
+@{
+    ViewData["Title"] = "Autos";
+}
+
+<div class="row">
+    <div class="col-sm">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" id="btnAgregarAuto">
+            Agregar
+        </button>
+    </div>
+</div>
+
+<div class="row justify-content-md-center">
+    <div class="col-sm">
+        <table class="table" id="tablaAutos">
+            <thead>
+                <tr>
+                    <th scope="col">Id Auto</th>
+                    <th scope="col">Marca</th>
+                    <th scope="col">Color</th>
+                    <th scope="col">Modelo</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Fecha Movimiento</th>
+                    <th scope="col">Activo</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</div>
+
+<!-- Modal -->
+@*<div class="modal fade" id="modalAgregarEditar" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">*@
+<div class="modal fade" id="modalAgregarEditar">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Auto</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" name="close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table id="tablaAgregarAuto">
+                    <thead>
+                        <tr>
+                            <th>
+                                <input type="text" class="form-control" id="inputId" placeholder="Id" hidden>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>
+                                <label for="inputMarca">Marca</label>
+                                <input type="text" class="form-control" id="inputMarca" placeholder="Marca">
+                            </th>
+                            <th>
+                                <label for="inputColor">Color</label>
+                                <input type="text" class="form-control" id="inputColor" placeholder="Color">
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>
+                                <label for="inputModelo">Modelo</label>
+                                <input type="text" class="form-control" id="inputModelo" placeholder="Modelo">
+                            </th>
+                            <th>
+                                <label for="inputPrecio">Precio</label>
+                                <input type="text" class="form-control" id="inputPrecio" placeholder="Precio">
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>
+                                <input class="form-check-input" type="checkbox" id="chkActivo" name="chkActivo">
+                                <label class="form-check-label" for="chkActivo">
+                                    Activo
+                            </th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-success" id="guardarAuto">Guardar</button>
+                <button type="submit" class="btn btn-success" id="actualizarAuto">Guardar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript" src="~/js/AutosJS.js"></script>
+}

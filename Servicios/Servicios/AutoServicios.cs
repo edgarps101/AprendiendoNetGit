@@ -74,7 +74,6 @@ namespace Servicios
             {
                 var AutoDTO = new Auto()
                 {
-                    IdAuto = autoModelo.IdAuto,
                     Marca = autoModelo.Marca,
                     Color = autoModelo.Color,
                     Modelo = autoModelo.Modelo,
